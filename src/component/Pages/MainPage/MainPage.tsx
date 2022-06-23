@@ -12,6 +12,8 @@ const MainPage: React.FC = () => {
         "Наши лучшие сервера для вашего использования,теперь решают проблемы с вашими ресурсами за вас, не отвлекая от действительно важных дел!",
       img: "./img/MainBackground.jpg",
       key: 9823674,
+      id: 0,
+      lastPlace: false,
     },
     {
       name: "Действительно быстрое оборудование!",
@@ -19,13 +21,17 @@ const MainPage: React.FC = () => {
         " Мы гарантируем, что наше оборудование выдаст вам стабильное подключение, что позволит пользователям вашего ресура быстро получить все необходимое!",
       img: "./img/fastres.png",
       key: 44578569,
+      id: 1,
+      lastPlace: false,
     },
     {
-      name: "Безопастность ваших данных!",
+      name: "Безопасность ваших данных!",
       description:
         "Все ресурсы сервера только ваши, никто без вашего согласия не сможет получить к ним доступ! Наша система безопасности проходит все необходимые тесты и соответствует последним стандартам безопасности!*",
       img: "./img/securesite.webp",
       key: 130843234,
+      id: 2,
+      lastPlace: false,
     },
     {
       name: "Игровой опыт!",
@@ -33,6 +39,8 @@ const MainPage: React.FC = () => {
         "Вы без доли сомнения можете поставить ваш игровой проект на наши сервера, а мы сделаем так что игроки получат полный игровой опыт без задержек - круглосуточно!",
       img: "./img/gameServer.jpg",
       key: 987482,
+      id: 3,
+      lastPlace: true,
     },
   ]);
   const [hover, setHover] = useState(false);
@@ -139,6 +147,7 @@ const MainPage: React.FC = () => {
             marginTop: 50,
           }}
         >
+          <label className={`${elem.id}`} />
           <span
             style={{
               marginTop: 10,
@@ -151,6 +160,65 @@ const MainPage: React.FC = () => {
             }}
           >
             {elem.description}
+            <br />
+            {!elem.lastPlace ? (
+              <Link
+                activeClass="active"
+                to={`${elem.id + 1}`}
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+              >
+                <Button
+                  variant={hover ? "contained" : "text"}
+                  onMouseOver={eventHoverOver}
+                  onMouseOut={eventHoverOut}
+                >
+                  <span
+                    style={{
+                      marginTop: 10,
+                      fontSize: "-webkit-xxx-large",
+                      fontStyle: "italic",
+                      fontFamily: "fantasy",
+                      color: "black",
+                      marginLeft: 25,
+                    }}
+                  >
+                    Далее
+                  </span>
+                </Button>
+              </Link>
+            ) : (
+              <Link
+                activeClass="active"
+                to="startpage"
+                spy={true}
+                smooth={true}
+                offset={-500}
+                duration={500}
+              >
+                <Button
+                  variant={hover ? "contained" : "text"}
+                  onClick={eventReady}
+                  onMouseOver={eventHoverOver}
+                  onMouseOut={eventHoverOut}
+                >
+                  <span
+                    style={{
+                      marginTop: 10,
+                      fontSize: "-webkit-xxx-large",
+                      fontStyle: "italic",
+                      fontFamily: "fantasy",
+                      color: "black",
+                      marginLeft: 25,
+                    }}
+                  >
+                    В начало!
+                  </span>
+                </Button>
+              </Link>
+            )}
           </span>
           <img
             height={800}
@@ -161,29 +229,6 @@ const MainPage: React.FC = () => {
           />
         </div>
       ))}
-
-      <Link
-        activeClass="active"
-        to="startpage"
-        spy={true}
-        smooth={true}
-        offset={-500}
-        duration={500}
-      >
-        <Button
-          onClick={eventReady}
-          variant="contained"
-          style={{
-            display: "block",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginBottom: 50,
-            marginTop: 150,
-          }}
-        >
-          Вернуться наверх
-        </Button>
-      </Link>
       <span>*по стандартам 'ГОСТ Р ИСО/МЭК 15408, ГОСТ Р 51275' </span>
     </>
   );
