@@ -127,45 +127,6 @@ const MainPage: React.FC = () => {
           </Button>
         </Link>
       )}
-
-      {/* <Link
-        activeClass="active"
-        to="gotoScroll"
-        spy={true}
-        smooth={true}
-        offset={-100}
-        duration={500}
-      >
-        <Button
-          variant={hover ? "contained" : "text"}
-          onClick={eventNxtBuy}
-          onMouseOver={eventHoverOver}
-          onMouseOut={eventHoverOut}
-          style={{
-            height: 100,
-            width: "max-content",
-            justifyContent: "center",
-            marginTop: 350,
-            marginBottom: 850,
-            marginLeft: "auto",
-            marginRight: "auto",
-            display: "block",
-          }}
-        >
-          <span
-            style={{
-              marginTop: 10,
-              fontSize: "-webkit-xxx-large",
-              fontStyle: "italic",
-              fontFamily: "fantasy",
-              color: "black",
-              marginLeft: 25,
-            }}
-          >
-            {ready}
-          </span>
-        </Button>
-      </Link> */}
       <label className="gotoScroll" />
       {placeItem.map((elem) => (
         <div
